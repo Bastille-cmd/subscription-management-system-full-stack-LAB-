@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Details</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Subscription Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Plan: <%= subscription.plan %></h5>
+                <p class="card-text">Cost: $<%= subscription.cost %></p>
+                <p class="card-text">Start Date: <%= subscription.startDate.toDateString() %></p>
+                <p class="card-text">End Date: <%= subscription.endDate.toDateString() %></p>
+                <p class="card-text">Phone Number: <%= subscription.phoneNumber %></p>
+                <p class="card-text">Age: <%= subscription.age %></p>
+                <p class="card-text">Monthly Income: $<%= subscription.monthlyIncome %></p>
+                <a href="/subscriptions/edit/<%= subscription._id %>" class="btn btn-primary">Edit Subscription</a>
+                <form action="/subscriptions/delete/<%= subscription._id %>" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete Subscription</button>
+                </form>
+                <a href="/subscriptions" class="btn btn-secondary">Back to Subscriptions</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

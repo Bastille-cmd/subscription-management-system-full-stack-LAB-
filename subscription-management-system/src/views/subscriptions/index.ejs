@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Subscription Management</h1>
+        <a href="/subscriptions/create" class="btn btn-primary">Create New Subscription</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Phone Number</th>
+                    <th>Age</th>
+                    <th>Monthly Income</th>
+                    <th>Plan</th>
+                    <th>Cost</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% subscriptions.forEach(function(subscription) { %>
+                    <tr>
+                        <td><%= subscription.phoneNumber %></td>
+                        <td><%= subscription.age %></td>
+                        <td><%= subscription.monthlyIncome %></td>
+                        <td><%= subscription.plan %></td>
+                        <td><%= subscription.cost %></td>
+                        <td><%= subscription.startDate.toDateString() %></td>
+                        <td><%= subscription.endDate.toDateString() %></td>
+                        <td>
+                            <a href="/subscriptions/<%= subscription._id %>/edit" class="btn btn-warning">Edit</a>
+                            <form action="/subscriptions/<%= subscription._id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            <a href="/subscriptions/<%= subscription._id %>" class="btn btn-info">View</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

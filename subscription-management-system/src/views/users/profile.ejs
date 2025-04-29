@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../layouts/main.ejs') %>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <h2>Welcome, <%= user.name %>!</h2>
+            <p>Email: <%= user.email %></p>
+            <p>Phone Number: <%= user.phoneNumber %></p>
+            <p>Monthly Income: <%= user.monthlyIncome %></p>
+            <h3>Your Subscriptions</h3>
+            <ul>
+                <% subscriptions.forEach(function(subscription) { %>
+                    <li>
+                        <strong>Plan:</strong> <%= subscription.plan %> - 
+                        <strong>Cost:</strong> $<%= subscription.cost %> 
+                        <a href="/subscriptions/<%= subscription._id %>">View</a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <a href="/users/logout" class="btn btn-danger">Logout</a>
+    </div>
+    <script src="/js/scripts.js"></script>
+</body>
+</html>
